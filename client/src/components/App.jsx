@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react';
-import Nav from './Nav.jsx';
+import Search from './Search.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,7 +14,10 @@ class App extends React.Component {
     return (
       <main className="main">
         <header>
-          <Nav />
+          <h1 className="brand-logo center">Giphy Gallery</h1>
+          <nav>
+            <Search />
+          </nav>
         </header>
       </main>
     )

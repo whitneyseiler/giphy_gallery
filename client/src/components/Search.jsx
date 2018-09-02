@@ -3,19 +3,15 @@ import {Row, Input, Button} from 'react-materialize'
 
 let Search = ({}) => {
     return (
-        <form className="nav-wrapper container">
-            <Row>
-                <Input 
-                    type="text" 
-                    name="query" 
-                    id="query" 
-                    // value={inputValue}
-                    aria-label="Search:"
-                    aria-required="true"
-                    label="Search:"/>
-                <Button waves="light" className="hoverable" id="display">DISPLAY</Button>
-            </Row>
-        </form>
+			<div className="nav-wrapper">
+				<form>
+					<div className="input-field">
+						<input id="search" type="search" />
+						<label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label>
+						<i className="material-icons">close</i>
+					</div>
+				</form>
+			</div>
     )
 }
 
