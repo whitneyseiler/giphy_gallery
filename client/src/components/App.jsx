@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react';
+import Nav from './Nav.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,8 +12,11 @@ class App extends React.Component {
 
   render () {
     return (
-      <div className="main">
-      </div>
+      <main className="main">
+        <header>
+          <Nav />
+        </header>
+      </main>
     )
   }
 }
