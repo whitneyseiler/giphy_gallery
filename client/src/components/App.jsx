@@ -10,12 +10,13 @@ class App extends React.Component {
 
     this.state = {
       results: [],
-      query: '',
-      loaded: false
+      route: 'trending',
+      offset: 0
     }
 
     this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.onChange = this.onChange.bind(this);
+    this.fetchGIFs = this.fetchGIFs.bind(this);
+    this.fetchMore = this.fetchMore.bind(this);
   }
 
   /*
@@ -26,22 +27,20 @@ class App extends React.Component {
   }
 
   fetchGIFs(route) {
-    console.log(route)
     // let publicApiKey = "dc6zaTOxFJmzC";
     let baseURL = "https://api.giphy.com/v1/gifs/";
     let limit = 24;
     let trendingURL = `trending?&api_key=${API_KEY}&limit=${limit}`;
-    let searchURL = `search?&api_key=${API_KEY}&q=${route}&limit=${limit}`
+    let searchURL = `search?&api_key=${API_KEY}&q=${this.state.query}&limit=${limit}`
     
     let endpoint = route === "trending" ? trendingURL : searchURL;
-    let url = baseURL + endpoint;
+    let url = `${baseURL}${endpoint}&offset=${this.state.offset}`;
 
     axios.get(url)
       .then(response => {
         const {data} = response.data;
-        console.log(response)
         this.setState({
-          results: data
+          results: [...this.state.results, ...data]
         });
       })
       .catch(function (error) {
@@ -49,16 +48,22 @@ class App extends React.Component {
       }); 
   }
 
-  onChange(e) {
-    let value = e.target.value.split(' ').join('+');
-    this.setState({ query: value });
+  fetchMore() {
+    this.setState({
+      offset: this.state.offset + 24
+    }, this.fetchGIFs(this.state.route))
   }
 
   handleKeyDown(e){
+    let value = e.target.value.split(' ').join('+');
+
     if(e.keyCode == 13){
       e.preventDefault();
-      let value = this.state.query;
-      this.fetchGIFs(value);
+      this.setState({ 
+        query: value,
+        results: [],
+        offset: 0
+      }, this.fetchGIFs(value));
     }
   }
 
@@ -68,11 +73,11 @@ class App extends React.Component {
         <header>
           <h1 className="brand-logo center">Giphy Gallery</h1>
           <nav>
-            <Search handleKeyDown={this.handleKeyDown} onChange={this.onChange}/>
+            <Search handleKeyDown={this.handleKeyDown}/>
           </nav>
         </header>
         <section className="results-container">
-          <ResultsContainer results={this.state.results}/>
+          <ResultsContainer results={this.state.results} route={this.state.route} fetchMore={this.fetchMore}/>
         </section>
       </main>
     )

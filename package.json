@@ -26,6 +26,7 @@
     "react-dom": "^15.4.2",
     "react-materialize": "^2.4.5",
     "react-responsive-masonry": "^2.0.0",
+    "react-waypoint": "^8.0.3",
     "request": "^2.88.0"
   }
 }
