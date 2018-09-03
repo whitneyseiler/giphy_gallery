@@ -24,8 +24,6 @@
     "materialize-css": "^1.0.0-beta",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-mason": "^1.1.2",
-    "react-masonry-component": "^6.2.1",
     "react-materialize": "^2.4.5",
     "react-responsive-masonry": "^2.0.0",
     "request": "^2.88.0"
