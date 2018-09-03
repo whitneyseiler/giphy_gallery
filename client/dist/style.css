@@ -27,3 +27,7 @@ input:valid {
 h1 {
     text-align: center;
 }
+
+.results-masonry {
+    max-width: 900px;
+}

@@ -1,5 +1,4 @@
 import React from 'react';
-import {Row, Input, Button} from 'react-materialize'
 
 let Search = ({}) => {
     return (
