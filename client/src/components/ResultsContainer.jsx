@@ -13,14 +13,15 @@ let ResultsContainer = ({results, route, fetchMore}) => {
               let caption = `${gif.title}, rating: ${gif.rating}`; 
 
               return (
-                <MediaBox 
-                  className="responsive-img" 
-                  src={gif.images.downsized.url}
-                  caption={caption}
-                  key={index} 
-                  width="300" 
-                  style={{padding: 10}}
-                />
+                <div key={index} id="image-box">
+                  <MediaBox 
+                    className="responsive-img" 
+                    src={gif.images.fixed_width.url}
+                    caption={caption}
+                    width="300" 
+                    style={{padding: 10}}
+                  />
+                </div>
               )
             })}
             <Waypoint

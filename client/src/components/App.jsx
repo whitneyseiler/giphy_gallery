@@ -23,24 +23,24 @@ class App extends React.Component {
   * retrieve top 20 trending GIFs upon component mount
   */
   componentDidMount() {
-    this.fetchGIFs('trending')
+    this.fetchGIFs()
   }
 
   fetchGIFs(route) {
-    // let publicApiKey = "dc6zaTOxFJmzC";
-    let baseURL = "https://api.giphy.com/v1/gifs/";
+    console.log(this.state)
     let limit = 24;
-    let trendingURL = `trending?&api_key=${API_KEY}&limit=${limit}`;
-    let searchURL = `search?&api_key=${API_KEY}&q=${this.state.query}&limit=${limit}`
-    
-    let endpoint = route === "trending" ? trendingURL : searchURL;
-    let url = `${baseURL}${endpoint}&offset=${this.state.offset}`;
+    let baseURL = "https://api.giphy.com/v1/gifs/";
+    let trendingEndpoint = `trending?&api_key=${API_KEY}&limit=${limit}&offset=${this.state.offset}`;
+    let searchEndpoint = `search?&api_key=${API_KEY}&q=${route}&limit=${limit}&offset=${this.state.offset}`
+    let url = `${baseURL}${route === "trending" ? trendingEndpoint : searchEndpoint}`;
+
+    let results = route === "trending" ? this.state.results : [];
 
     axios.get(url)
       .then(response => {
         const {data} = response.data;
         this.setState({
-          results: [...this.state.results, ...data]
+          results: [...results, ...data]
         });
       })
       .catch(function (error) {
@@ -59,11 +59,11 @@ class App extends React.Component {
 
     if(e.keyCode == 13){
       e.preventDefault();
-      this.setState({ 
-        query: value,
-        results: [],
+      this.setState({
+        route: value,
         offset: 0
-      }, this.fetchGIFs(value));
+      });
+      this.fetchGIFs(value)
     }
   }
 
@@ -71,7 +71,7 @@ class App extends React.Component {
     return (
       <main className="main">
         <header>
-          <h1 className="brand-logo center">Giphy Gallery</h1>
+          <h1 className="brand-logo center" onClick={() => window.location.reload()}>Giphy Gallery</h1>
           <nav>
             <Search handleKeyDown={this.handleKeyDown}/>
           </nav>
