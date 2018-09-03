@@ -9,12 +9,22 @@ Completed as a coding challenge for Shift.org
 
 To start, in your browser navigate to: http://localhost:3000
 
+# Tech Stack
+* Javascript
+* ReactJS
+* Webpack
+* React-Materialize *(for nav bar styling and GIF modal MediaBox)*
+* React Responsive Masonry *(for image grid)*
+* React Waypoint *(for infinite scroll)*
+* Axios
+* Express
+
 # Notes on functionality:
 * App loads trending GIFs upon component mount
 * Infinite Scroll has been implemented.
-  * Due to GIF sizes, the scrolling is not as smooth as I would have preferred
+  * *Due to GIF sizes, the scrolling is not as smooth as I would have preferred*
 * Search Bar queries can be submitted by hitting the enter key
-  * Search results take a moment to render - I would have liked to solve this given more time. 
+  * *Search results take a moment to render - I would have liked to solve this given more time.*
 * Clicking App title refreshes page to home
 * Gallery is responsive to window size
 

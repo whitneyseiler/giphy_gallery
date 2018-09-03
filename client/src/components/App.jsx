@@ -2,7 +2,10 @@ import React from 'react';
 import axios from 'Axios';
 import Search from './Search.jsx';
 import ResultsContainer from './ResultsContainer.jsx';
-import {API_KEY} from '../../../config';
+// import {API_KEY} from '../../../config';
+
+//TODO: change to your personal API key or create config.js
+const API_KEY = ''
 
 class App extends React.Component {
   constructor(props) {
