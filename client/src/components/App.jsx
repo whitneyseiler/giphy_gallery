@@ -5,7 +5,7 @@ import ResultsContainer from './ResultsContainer.jsx';
 // import {API_KEY} from '../../../config';
 
 //TODO: change to your personal API key or create config.js
-const API_KEY = ''
+const API_KEY = 'MqHwoX9aRuMaHUSDF9chC7RZQMTShaEl'
 
 class App extends React.Component {
   constructor(props) {
