@@ -2,9 +2,10 @@
 Completed as a coding challenge for Shift.org
 
 # How to Run Locally
-1. Install dependencies: `-npm install`
-4. Run React Webpack: `-npm run react-dev`,
-5. Start server: `-npm server`
+1. Get a Giphy API Key [here](https://developers.giphy.com/dashboard/?create=true).
+2. Install dependencies: `-npm install`
+3. Run React Webpack: `-npm run react-dev`,
+4. Start server: `-npm server`
 
 To start, in your browser navigate to: http://localhost:3000
 
