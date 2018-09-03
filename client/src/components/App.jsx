@@ -23,11 +23,11 @@ class App extends React.Component {
   * retrieve top 20 trending GIFs upon component mount
   */
   componentDidMount() {
-    this.fetchGIFs()
+    this.fetchGIFs('trending')
   }
 
   fetchGIFs(route) {
-    console.log(this.state)
+
     let limit = 24;
     let baseURL = "https://api.giphy.com/v1/gifs/";
     let trendingEndpoint = `trending?&api_key=${API_KEY}&limit=${limit}&offset=${this.state.offset}`;
@@ -48,12 +48,19 @@ class App extends React.Component {
       }); 
   }
 
+  /**
+   * infinite scroll: fetch more results when user scrolls to bottom of page
+   */
   fetchMore() {
     this.setState({
       offset: this.state.offset + 24
     }, this.fetchGIFs(this.state.route))
   }
 
+  /**
+   * when user enters searc query and hits enter, reset offset to 0 
+   * and fetch associated GIFs
+   */
   handleKeyDown(e){
     let value = e.target.value.split(' ').join('+');
 
