@@ -31,7 +31,7 @@ To start, in your browser navigate to: http://localhost:3000
 # Known issues / changes I would have made given more time: 
 - [x] Implement Infinite Scroll
 - [ ] Address load time / performance issues
-- [ ] Fix buggy Infinite Scroll on search results
+- [x] Fix buggy Infinite Scroll on search results
 - [ ] Add suggested search query/GIF category (e.g. 'reactions', 'sports', etc.) links to nav bar
 - [ ] Sort GIFs by upload date
 - [ ] Allow user to sort by ascending or descending date

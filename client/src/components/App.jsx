@@ -14,7 +14,9 @@ class App extends React.Component {
     this.state = {
       results: [],
       route: 'trending',
-      offset: 0
+      offset: 0,
+      suggested: ['reactions', 'entertainment', 'sports', 'artists'],
+      loading: false
     }
 
     this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -30,24 +32,32 @@ class App extends React.Component {
   }
 
   fetchGIFs(route) {
-
+    console.log(this.state.loading)
+    this.setState({
+      loading: true
+    });
+    
     let limit = 24;
     let baseURL = "https://api.giphy.com/v1/gifs/";
     let trendingEndpoint = `trending?&api_key=${API_KEY}&limit=${limit}&offset=${this.state.offset}`;
     let searchEndpoint = `search?&api_key=${API_KEY}&q=${route}&limit=${limit}&offset=${this.state.offset}`
     let url = `${baseURL}${route === "trending" ? trendingEndpoint : searchEndpoint}`;
 
-    let results = route === "trending" ? this.state.results : [];
+    let results = route === this.state.route ? this.state.results : [];
 
     axios.get(url)
       .then(response => {
         const {data} = response.data;
         this.setState({
-          results: [...results, ...data]
+          results: [...results, ...data],
+          loading: false
         });
       })
-      .catch(function (error) {
+      .catch(error => {
         console.log(error);
+        this.setState({
+          loading: false
+        })
       }); 
   }
 
@@ -71,7 +81,7 @@ class App extends React.Component {
       e.preventDefault();
       this.setState({
         route: value,
-        offset: 0
+        offset: 0,
       });
       this.fetchGIFs(value)
     }
@@ -85,10 +95,21 @@ class App extends React.Component {
           <nav>
             <Search handleKeyDown={this.handleKeyDown}/>
           </nav>
+          <div id="suggested-links" style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}>
+          {this.state.suggested.map(channel => {
+            return <span className="channel"
+                    style={{padding:"0px 20px",cursor:"pointer"}}
+                    onClick={() => this.fetchGIFs(channel)}
+                  >{channel}</span>
+          })}
+          </div>
         </header>
-        <section className="results-container">
-          <ResultsContainer results={this.state.results} route={this.state.route} fetchMore={this.fetchMore}/>
-        </section>
+        {!this.state.loading ? 
+          <section className="results-container">
+            <ResultsContainer results={this.state.results} route={this.state.route} fetchMore={this.fetchMore}/>
+          </section> :
+          <div id="loading">Loading...</div>
+        }
       </main>
     )
   }

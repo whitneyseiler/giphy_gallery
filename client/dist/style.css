@@ -31,3 +31,7 @@ h1 {
 .results-masonry {
     max-width: 900px;
 }
+
+span.channel {
+    padding: 0px 20px;
+}

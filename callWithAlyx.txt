@@ -1,0 +1,65 @@
+//LED SIGN
+
+1) research programming an LED SIGN
+  - Javascript specific
+  - any programs that I might need
+  - look for example code
+
+2) map out letter placement
+  - establish rules about letter dimensions (considering dimension of the sign)
+    - e.g. max width = 16, max height = 16
+    - e.g. "T" = determine left arm length, center stem width, right arm length;
+  - draw on graph paper or sketch program
+
+3) handle rendering stationary text on home machine
+  - add border to cells and view in browser/preview
+  - iterate over grid, check for coordinates of letter and turn cell on/fill cell accordingly
+  - populate two dimensional array with booleans indicating whether cell will be turned on/lit on sign
+
+3) handle stationary text on LED sign
+  example: "HELLO"
+  - iterate over two dimensional array and, using LED programming learned from research, get sign to display text
+    - if cell value is true, light up that cell
+
+4) handle animation/scrolling
+  - set farthest left coordinate of letter to last cell in grid row (right edge of screen)
+  - on timeout or other automation, shift left coordinate of every cell in letter one cell left
+  - continue for all letters
+
+
+
+//GREETING CARD FOR ALIENS
+
+1) what information would be useful to aliens?
+  - sounds (languages, nature, industry, culture)
+  - images (typical human attire, homes, cars, animals)
+  - instruction ilustrations for consuming media (e.g. needle on record)
+
+  - if sending HTML for viewing in alien browser:
+    - include all necessary dependencies (including browser and environment) with simple script for installing
+    - include instructions for loading in browser
+    - instructions for navigating (selection options e.g. click, touch)
+    - table of contents
+    - README
+
+
+
+// PARKING LOT
+
+1) dimension of building foundation 
+2) max height or number of floors
+  - if max height, determine standard ceiling height in a parking garage (based on car height)
+  - consider who is parking in garage 
+    - how necessary it is to accomodate tall vehicles
+    - whats target audience/user base 
+    - consider market competition
+    - consider building/maintenance cost, estimated profit based on certain numbers of spaces
+3) sketch one floor
+  - where are entrance and exit? probably determined by street location
+  - 
+4) EXIT EFFICIENCY
+  - use model where customers pay before exiting
+  - have as many exit lanes as possible
+  - is express exit possible?
+  - ensure layout leaves enough room for traffic and cars parking/leaving spaces
+  - 
